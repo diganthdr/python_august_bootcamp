@@ -1,0 +1,70 @@
+{
+    "Karnataka": {
+        "districtData": {
+            "Chikkamagaluru": {
+                "notes": "",
+                "active": 39,
+                "confirmed": 81,
+                "deceased": 1,
+                "recovered": 41,
+                "delta": {
+                    "confirmed": 0,
+                    "deceased": 0,
+                    "recovered": 0
+                }
+            },
+            "Ballari": {
+                "notes": "",
+                "active": 485,
+                "confirmed": 919,
+                "deceased": 29,
+                "recovered": 405,
+                "delta": {
+                    "confirmed": 0,
+                    "deceased": 0,
+                    "recovered": 0
+                }
+            }
+        }
+    },
+    "Kerala": {
+        "districtData": {
+            "Other State": {
+                "notes": "",
+                "active": 0,
+                "confirmed": 0,
+                "deceased": 0,
+                "recovered": 0,
+                "delta": {
+                    "confirmed": 0,
+                    "deceased": 0,
+                    "recovered": 0
+                }
+            },
+            "Ernakulam": {
+                "notes": "",
+                "active": 179,
+                "confirmed": 274,
+                "deceased": 1,
+                "recovered": 93,
+                "delta": {
+                    "confirmed": 9,
+                    "deceased": 0,
+                    "recovered": 10
+                }
+            },
+            "Idukki": {
+                "notes": "",
+                "active": 45,
+                "confirmed": 117,
+                "deceased": 0,
+                "recovered": 72,
+                "delta": {
+                    "confirmed": 8,
+                    "deceased": 0,
+                    "recovered": 13
+                }
+            }
+        }
+    }
+}
