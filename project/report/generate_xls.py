@@ -1,4 +1,7 @@
+import time
+import datetime
 from report import covid_statewise_stats
+from db.dbhandle import insert_row, get_rows
 
 def generate_xlx_report( data ):
     if not isinstance(data, dict):
@@ -10,6 +13,9 @@ def generate_xlx_report( data ):
     for state_name in all_states:
         total_cases = covid_statewise_stats.get_total_cases(state_name, data)
         state_stats_map.update({state_name: total_cases})
+
+        #much easier to put in to DB here:
+        insert_row('state_cases', (datetime.date.today().strftime('%Y-%m-%d'), state_name, total_cases))
 
     XLS_REPORT_FILENAME = 'statewise_covid_report.xls'
     create_xls(state_stats_map, XLS_REPORT_FILENAME )

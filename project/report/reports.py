@@ -7,7 +7,7 @@ from subs.sub_data import get_subs_data
 from mail.mail import send_mail
 from report.generate_user_report import generate_user_report
 from report.generate_xls import generate_xlx_report
-from db.dbhandle import insert_row, get_rows
+from db.dbhandle import insert_row, get_rows, get_statewise_data_for_graph
 
 def trigger():
     ''' aggregation of all modules here'''
@@ -42,6 +42,8 @@ def trigger():
 
     print(processed_news_text)
     get_rows('news', '2020-08-26')
+
+    draw_graph()
     #6. Send mail with above data. 
     #   1. user specific data.
     #   2. XLS, attachment
@@ -62,4 +64,21 @@ def trigger():
         subject_line = "Python mini-project: COVID: Dashboard"
 
         print("Sending mail to: ", user) #, "with:", mail_text)
-        #send_mail(user, subject_line, mail_text, attachment=XLS_REPORT_FILENAME)
+        send_mail(user, subject_line, mail_text, attachment=XLS_REPORT_FILENAME)
+
+
+def draw_graph():
+    x,y =  get_statewise_data_for_graph('state_cases', "2020-08-27")
+    import matplotlib.pyplot as plt
+    fig = plt.figure()
+    #ax = fig.add_axes([0.7,0.5,0.3,0.5])
+    ax = fig.add_axes([0,0,1,1])
+    ax.bar(x,y)
+
+    plt.title('Date: ' + datetime.date.today().strftime('%Y-%m-%d') )
+    plt.xlabel('States')
+    plt.ylabel('Active cases')
+    plt.xticks(rotation=45)
+
+    plt.savefig('plot03.png', dpi=300, bbox_inches='tight')
+    plt.show()
